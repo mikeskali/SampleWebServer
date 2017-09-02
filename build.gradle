@@ -1,0 +1,39 @@
+group 'sample-projects'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.13'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript {
+    ext {
+        jerseyVersion           	= '1.19.4'
+        jettyVersion				= '9.4.6.v20170531'
+        slf4jVersion                = '1.7.10'
+    }
+}
+
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: "$slf4jVersion"
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: "$slf4jVersion"
+
+    compile "com.sun.jersey:jersey-core:$jerseyVersion"
+    compile "com.sun.jersey:jersey-server:$jerseyVersion"
+    compile "com.sun.jersey:jersey-servlet:$jerseyVersion"
+    compile "com.sun.jersey:jersey-json:$jerseyVersion"
+    compile "com.sun.jersey:jersey-bundle:$jerseyVersion"
+
+    compile "org.eclipse.jetty:jetty-server:$jettyVersion"
+    compile "org.eclipse.jetty:jetty-servlet:$jettyVersion"
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
