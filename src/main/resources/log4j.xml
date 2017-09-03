@@ -53,6 +53,12 @@
 		<appender-ref ref="console" />
 	</logger>
 
+	<logger name="sample.webserver.math.MathOperations" additivity="false">
+		<level value="DEBUG"></level>
+		<appender-ref ref="RollingAppender"></appender-ref>
+		<appender-ref ref="console" />
+	</logger>
+
 	<root>
 		<priority value="info" />
 		<appender-ref ref="RollingAppender" />
